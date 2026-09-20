@@ -7,7 +7,7 @@
 //    and paste it below. Keep it out of public commits if you
 //    can — for this assignment a placeholder is fine.
 const CONFIG = {
-  API_KEY: "YOUR_OPENWEATHERMAP_API_KEY",
+  API_KEY: "4c990488665801cefd1e01826bbe4785",
   BASE_URL: "https://api.openweathermap.org/data/2.5/weather",
   ICON_URL: "https://openweathermap.org/img/wn",
   DEFAULT_CITY: "Dhaka",
