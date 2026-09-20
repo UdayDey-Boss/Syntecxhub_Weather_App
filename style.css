@@ -1,0 +1,221 @@
+:root {
+  --navy-deep: #0b1e3d;
+  --navy-mid: #142850;
+  --cloud: #f7f3ea;
+  --mist: #9fb3d1;
+  --amber: #f4a340;
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --radius: 22px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--cloud);
+}
+
+.stage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy-mid) 55%, #1c3763 100%);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.6s ease;
+}
+
+.stage[data-condition="clear"] { background: linear-gradient(160deg, #0b1e3d 0%, #1c3763 55%, #2c4c86 100%); }
+.stage[data-condition="clouds"] { background: linear-gradient(160deg, #232a3b 0%, #34405c 55%, #46577f 100%); }
+.stage[data-condition="rain"] { background: linear-gradient(160deg, #10131c 0%, #1c2436 55%, #29344d 100%); }
+.stage[data-condition="snow"] { background: linear-gradient(160deg, #1a2a3d 0%, #33506e 55%, #5b7f9e 100%); }
+
+.sky-glow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  top: -180px;
+  right: -140px;
+  background: radial-gradient(circle, rgba(244, 163, 64, 0.22), transparent 70%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 28px 28px 20px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 1;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.wordmark {
+  font-family: "Sora", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  padding: 6px 6px 6px 14px;
+  flex: 1;
+  max-width: 220px;
+}
+
+.search input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--cloud);
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  min-width: 0;
+}
+
+.search input::placeholder { color: var(--mist); }
+
+.search button {
+  border: none;
+  background: var(--amber);
+  color: #1a1200;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.search button:hover { transform: scale(1.06); }
+
+.status {
+  text-align: center;
+  padding: 40px 10px;
+  color: var(--mist);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.status.error { color: #f2a3a3; }
+
+.weather { animation: fadeIn 0.4s ease; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.place-line { margin-bottom: 18px; }
+
+.place-line h1 {
+  font-family: "Sora", sans-serif;
+  font-size: 24px;
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.place-line p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--mist);
+}
+
+.hero-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.temp-block {
+  font-family: "Sora", sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+.deg {
+  font-size: 24px;
+  margin-top: 6px;
+  color: var(--mist);
+  font-weight: 600;
+}
+
+.icon-block {
+  text-align: center;
+}
+
+.icon-block p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  text-transform: capitalize;
+  color: var(--mist);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 16px;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-label {
+  font-size: 11px;
+  color: var(--mist);
+}
+
+.detail-value {
+  font-family: "Sora", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.card-footer {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--glass-border);
+  font-size: 11px;
+  color: var(--mist);
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .card { padding: 22px 20px 16px; }
+  .temp-block { font-size: 52px; }
+}
