@@ -54,10 +54,3 @@ Syntecxhub_Weather_App/
 └── README.md
 ```
 
-## Author
-
-Submitted as part of the **Syntecxhub Internship Program** —
-Front-End Development track.
-
-- LinkedIn: shared with `@Syntecxhub` mentioned per program instructions
-- Company: [www.syntecxhub.com](https://www.syntecxhub.com)
